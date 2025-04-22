@@ -4,19 +4,23 @@ var time_alive #in seconds
 var lifetime #in seconds
 
 var firing_pos: Vector3
-var flash
-var light
+@export var flash: GPUParticles3D
+@export var light: Light3D
+#@export var flash_mesh: MeshInstance3D
 var colour: Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
-	flash = $muzzle_flash
-	light = $muzzle_light
+	#flash = $muzzle_flash
+	#light = $muzzle_light
 	
 	light.light_color = colour
 	flash.draw_pass_1.material.albedo_color = colour
 	flash.draw_pass_1.material.emission = colour
+	#if flash_mesh != null:
+		#flash_mesh.mesh.material.albedo_color = colour
+		#flash_mesh.mesh.material.emission = colour
 	lifetime = flash.lifetime
 	flash.emitting = true
 	global_position = firing_pos

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8lbivgiw3vgu"]
 
 [ext_resource type="Script" path="res://scripts/effects/flash.gd" id="1_xt3pu"]
-[ext_resource type="Texture2D" uid="uid://tke11ed0utau" path="res://assets/textures/particles/muzzle_flash_2.png" id="2_bx1m0"]
+[ext_resource type="Texture2D" uid="uid://bxau7bv5qwdw3" path="res://assets/textures/particles/muzzle_test.png" id="2_jbip2"]
 
 [sub_resource type="Curve" id="Curve_eov7s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.471429, 0.98105), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -23,7 +23,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_color = Color(1, 1, 1, 0.741176)
-albedo_texture = ExtResource("2_bx1m0")
+albedo_texture = ExtResource("2_jbip2")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 5.0
@@ -38,21 +38,20 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_useld")
 size = Vector2(0.2, 0.2)
 
-[node name="flash" type="Node3D"]
+[node name="flash" type="Node3D" node_paths=PackedStringArray("flash", "light")]
 script = ExtResource("1_xt3pu")
+flash = NodePath("muzzle_flash")
+light = NodePath("muzzle_light")
 
 [node name="muzzle_flash" type="GPUParticles3D" parent="."]
-emitting = false
-amount = 10
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000924468, -2.98023e-08, -0.00182575)
+amount = 2
 lifetime = 0.04
-one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5ebq1")
-draw_passes = 2
 draw_pass_1 = SubResource("QuadMesh_usl3f")
-draw_pass_2 = null
 
 [node name="muzzle_light" type="OmniLight3D" parent="."]
 shadow_enabled = true

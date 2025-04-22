@@ -15,6 +15,8 @@ class_name item
 @export var is_melee: bool
 @export var is_breakable: bool
 @export var is_usabled: bool #Can you use the item? Potions etc.
+@export var has_battery: bool
+
 
 #state parameters
 var state_handler

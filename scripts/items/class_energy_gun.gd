@@ -13,6 +13,7 @@ var current_overheat_effect
 
 func _ready() -> void:
 	super()
+	has_battery = true
 	if overheat_effect == null:
 		overheat_effect = preload("res://effects/overheat.tscn").instantiate()
 	overheat_effect.position = overheat_effect_pos.position
@@ -34,6 +35,7 @@ func manage_heat(delta: float):
 func primary_fire():
 	if heat > 100:
 		biped.torso_handler.current_state.transition_to_state("torso_overheat")
+		burst_counter = burst_amount - 1
 	elif battery >= 0:
 		biped.torso_handler.current_state.transition_to_state("torso_firing")
 	else:

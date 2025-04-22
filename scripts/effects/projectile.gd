@@ -14,6 +14,7 @@ var gun: RigidBody3D
 @export var speed: float = 1
 @export var size: float = 1
 
+
 #code shit
 var direction
 var initial_position
@@ -32,8 +33,11 @@ func _ready() -> void:
 	light = $light
 	model.mesh.material.albedo_color = colour
 	model.mesh.material.emission = colour
+	model.mesh.radius = 0.0125 * size
+	model.mesh.height = 2 * (0.0125 * size)
 	tail.mesh.material.albedo_color = colour
 	tail.mesh.material.emission = colour
+	tail.mesh.bottom_radius = 0.0125 * size
 	effect.draw_pass_1.material.set_albedo(colour)
 	light.light_color = colour
 	global_position = initial_position.global_position + (0.5 * direction)
@@ -64,6 +68,11 @@ func _physics_process(delta: float) -> void:
 			bullet_hole_instance.wall_normal = hit_ray.get_collision_normal()
 			GAME.WORLD.PROJECTILES.add_child(bullet_hole_instance)
 		elif hit_ray.get_collider().get_collision_layer() == 8:
+			var ricochet_instance = ricochet.instantiate()
+			ricochet_instance.spawn_position = hit_ray.get_collision_point()
+			ricochet_instance.colour = colour
+			ricochet_instance.wall_normal = hit_ray.get_collision_normal()
+			GAME.WORLD.PROJECTILES.add_child(ricochet_instance)
 			hit_ray.get_collider().entity.stats.damage(gun.damage, gun.elemental_type, gun.stagger_damage, hit_ray.get_collision_point(), hit_ray.get_collider().hitbox_type, -direction)
 			#biped.shoot_ray.get_collider().
 		queue_free()

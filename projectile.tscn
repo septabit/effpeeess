@@ -59,7 +59,7 @@ speed = 50.0
 mesh = SubResource("SphereMesh_k852j")
 
 [node name="tail" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0.27451)
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, -0.000268251, 0.000993311, 0.248231)
 mesh = SubResource("CylinderMesh_7xlm0")
 
 [node name="effect" type="GPUParticles3D" parent="."]

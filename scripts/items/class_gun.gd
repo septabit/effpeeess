@@ -168,6 +168,11 @@ func shoot_hitscan():
 			bullet_hole_instance.wall_normal = biped.shoot_ray.get_collision_normal()
 			GAME.WORLD.PROJECTILES.add_child(bullet_hole_instance)
 		elif biped.shoot_ray.get_collider().get_collision_layer() == 8:
+			var ricochet_instance = ricochet.instantiate()
+			ricochet_instance.spawn_position = biped.shoot_ray.get_collision_point()
+			ricochet_instance.colour = tracer_colour
+			ricochet_instance.wall_normal = biped.shoot_ray.get_collision_normal()
+			GAME.WORLD.PROJECTILES.add_child(ricochet_instance)
 			print("hit_entity")
 			print(biped.shoot_ray.get_collider())
 			print(biped.shoot_ray.get_collider().entity.stats)
