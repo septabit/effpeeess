@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dyadpt7uelmry"]
+[gd_scene load_steps=23 format=4 uid="uid://dyadpt7uelmry"]
 
 [ext_resource type="Script" path="res://scripts/objects/lamp.gd" id="1_cl744"]
 [ext_resource type="Texture2D" uid="uid://caw0bywnb0epq" path="res://assets/models/scenery/boxlight/light_box_0.png" id="1_l4o16"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/objects/object_stats.gd" id="5_27gg0"]
 [ext_resource type="Script" path="res://scripts/states/lamp_state_handler.gd" id="6_kujcr"]
 [ext_resource type="Script" path="res://scripts/states/lamp_state/lamp_flickering.gd" id="7_4of8j"]
+[ext_resource type="Script" path="res://scripts/states/lamp_state/lamp_on.gd" id="7_qboch"]
 [ext_resource type="Script" path="res://scripts/states/lamp_state/lamp_off.gd" id="8_r004i"]
 [ext_resource type="Script" path="res://scripts/states/lamp_state/lamp_broken.gd" id="9_8d4rp"]
 [ext_resource type="Script" path="res://scripts/states/lamp_state/lamp_dead.gd" id="10_4ryws"]
@@ -182,7 +183,7 @@ script = ExtResource("6_kujcr")
 initial_state = NodePath("lamp_spawn")
 
 [node name="lamp_on" type="Node" parent="lamp_state"]
-script = ExtResource("7_4of8j")
+script = ExtResource("7_qboch")
 
 [node name="lamp_off" type="Node" parent="lamp_state"]
 script = ExtResource("8_r004i")
